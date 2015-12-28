@@ -39,7 +39,7 @@ class Point:
         return Point(int(round(self.x)), int(round(self.y)))
 
     def as_tuple(self):
-        return (self.x, self.y)
+        return self.x, self.y
 
     def __cmp__(self, other):
         return cmp(self.as_tuple(), other.as_tuple())
@@ -54,7 +54,7 @@ class Embroidery:
             self.coords.append(coord)
 
     def translate_to_origin(self):
-        if (len(self.coords) == 0):
+        if len(self.coords) == 0:
             return
         (maxx, maxy) = (self.coords[0].x, self.coords[0].y)
         (minx, miny) = (self.coords[0].x, self.coords[0].y)
@@ -81,7 +81,7 @@ class Embroidery:
         self.pos = Point(0, 0)
         lastColor = None
         for stitch in self.coords:
-            if (lastColor != None and stitch.color != lastColor):
+            if lastColor != None and stitch.color != lastColor:
                 mode_byte = 0x99
             # dbg.write("Color change!\n")
             else:
@@ -95,9 +95,9 @@ class Embroidery:
             assert (abs(delta.y) <= 127)
             str += chr(abs(delta.y))
             str += chr(abs(delta.x))
-            if (delta.y < 0):
+            if delta.y < 0:
                 mode_byte |= 0x20
-            if (delta.x < 0):
+            if delta.x < 0:
                 mode_byte |= 0x40
             str += chr(mode_byte)
             self.pos = stitch
@@ -110,7 +110,7 @@ class Embroidery:
         lastColor = None
         numColors = 0x0
         for stitch in self.coords[1:]:
-            if (lastColor != None and stitch.color != lastColor):
+            if lastColor != None and stitch.color != lastColor:
                 numColors += 1
                 # color change
                 self.str += chr(0x80)
@@ -124,16 +124,16 @@ class Embroidery:
             delta = new_int - old_int
 
             def move(x, y):
-                if (x < 0): x = x + 256
+                if x < 0: x = x + 256
                 self.str += chr(x)
-                if (y < 0): y = y + 256
+                if y < 0: y = y + 256
                 self.str += chr(y)
 
-            while (delta.x != 0 or delta.y != 0):
+            while delta.x != 0 or delta.y != 0:
                 def clamp(v):
-                    if (v > 127):
+                    if v > 127:
                         v = 127
-                    if (v < -127):
+                    if v < -127:
                         v = -127
                     return v
 
@@ -258,7 +258,7 @@ class Koch(Turtle):
         fp.close()
 
     def edge(self, depth, dist):
-        if (depth == 0):
+        if depth == 0:
             self.forward(dist)
         else:
             self.edge(depth - 1, dist / 3.0)
@@ -283,7 +283,7 @@ class Hilbert(Turtle):
 
     # http://en.wikipedia.org/wiki/Hilbert_curve#Python
     def hilbert(self, level, angle):
-        if (level == 0):
+        if level == 0:
             return
         self.right(angle)
         self.hilbert(level - 1, -angle)
@@ -298,6 +298,6 @@ class Hilbert(Turtle):
         self.right(angle)
 
 
-if (__name__ == '__main__'):
+if __name__ == '__main__':
     # Koch(4)
     Hilbert(6)
