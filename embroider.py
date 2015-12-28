@@ -20,9 +20,7 @@
 
 import sys
 sys.path.append("/usr/share/inkscape/extensions")
-import os
 from copy import deepcopy
-import time
 import inkex
 import simplepath
 import simplestyle
@@ -32,7 +30,6 @@ import PyEmb
 import math
 import random
 import operator
-import lxml.etree as etree
 from lxml.builder import E
 import shapely.geometry as shgeo
 import shapely.affinity as affinity
