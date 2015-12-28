@@ -3,7 +3,6 @@
 # http://www.achatina.de/sewing/main/TECHNICL.HTM
 
 import math
-import sys
 
 
 class Point:
