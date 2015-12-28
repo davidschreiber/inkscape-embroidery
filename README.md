@@ -1,3 +1,5 @@
+# Embroidery output extension for Inkscape
+
 Inkscape is a natural tool for designing embroidery patterns. The only challenge is converting the Inkscape design to a stitch file. Here's a rough cut as such a tool that got me through my first project. It may work for you, or maybe you can fix a bug or two and make it more robust for your application.
 
 ## Installation.
